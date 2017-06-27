@@ -47,7 +47,7 @@ class gruposController extends Controller
       $grupos=DB::table('grupos')
        ->where('grupos.id', '=', $id)
        ->join('maestros','grupos.maestro_id','=','maestros.id')
-    	 ->join('materias','maestros.materia_id','=','materias.id')
+    	 ->join('materias','grupos.materia_id','=','materias.id')
      	 ->select('grupos.*','maestros.nombre AS maestro','materias.nombre AS materia')
          ->first();
 
