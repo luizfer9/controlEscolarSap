@@ -2,7 +2,11 @@
 
 @section('contenido')
 <table class="table table-striped">
+	
 	<thead>
+		<!--h1 class="text-right"-->
+			<a href="{{url('/alumnosPDF')}}" class="btn btn-default btn-xs">PDF</a>
+		<!--/h1-->
 		<tr>
 			<th>ID</th>
 			<th>Nombre</th>

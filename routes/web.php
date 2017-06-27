@@ -15,6 +15,7 @@ Route::get('/', 'homeController@index');
 Route::get('/registrarAlumno', 'alumnosController@registrar');
 Route::post('/guardarAlumno', 'alumnosController@guardar');
 Route::get('/consultarAlumnos', 'alumnosController@consultar');
+Route::post('/alumnosPDF', 'alumnosController@pdf');
 Route::get('/eliminarAlumno/{id}', 'alumnosController@eliminar');
 Route::get('/editarAlumno/{id}', 'alumnosController@editar');
 Route::post('/actualizarAlumno/{id}', 'alumnosController@actualizar');
