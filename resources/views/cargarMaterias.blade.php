@@ -1,4 +1,4 @@
-@extends('master')
+extends('master')
 @section('contenido')
 <h2> nombre: {{$alumno->nombre}}</h2>
 <hr>
@@ -30,9 +30,9 @@
 			<tbody>
 			foreach($materias as $mt)
 				<tr>
-					<td>{{$mt->clave</td>
+					<td>{{$mt->mc</td>
 					<td>{{$mt->nombre</td>
-					<td>{{$mt->grupo</td>
+					<td>{{$mt->clave</td>
 					<td>{{$mt->aula</td>
 					<td>{{$mt->hora</td>
 					<td>
