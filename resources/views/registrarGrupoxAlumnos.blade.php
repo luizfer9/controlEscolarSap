@@ -15,7 +15,7 @@
 		<label for="grupo">Grupo:</label>
 		<select name="grupo" class="form-control">
 			@foreach($grupos as $c)
-				<option value="{{$c->id}}">{{$c->aula}}</option>
+				<option value="{{$c->id}}">{{$c->id}}</option>
 			@endforeach
 		</select>
 	</div>

@@ -36,5 +36,7 @@ Route::post('/actualizarGrupo/{id}', 'gruposController@actualizar');
 Route::get('/registrarGrupoxAlumnos', 'groupXalController@registrar');
 Route::post('/guardarGruposxAlumnos', 'groupXalController@guardar');
 Route::get('/consultarGrupoxAlumnos', 'groupXalController@consultar');
-//Route::get('/eliminarGroupxAlumnos/{a}', 'groupXalController@eliminar');
+Route::get('/eliminarGroupxAlumnos/{id_alumno}&&{id_grupo}', 'groupXalController@eliminar');
+Route::get('/editarGroupxAlumnos/{id_alumno}&&{id_grupo}', 'groupXalController@editar');
+Route::post('/actualizarGroupxAlumnos/{alumno}&&{grupo}&&{maestro}', 'groupXalController@actualizar');
 
