@@ -15,7 +15,8 @@ Route::get('/', 'homeController@index');
 Route::get('/registrarAlumno', 'alumnosController@registrar');
 Route::post('/guardarAlumno', 'alumnosController@guardar');
 Route::get('/consultarAlumnos', 'alumnosController@consultar');
-Route::post('/alumnosPDF', 'alumnosController@pdf');
+//Route::post('/alumnosPDF', 'alumnosController@pdf');
+//Route::get('/cargarMaterias/{id}', 'materiasController@cargar');
 Route::get('/eliminarAlumno/{id}', 'alumnosController@eliminar');
 Route::get('/editarAlumno/{id}', 'alumnosController@editar');
 Route::post('/actualizarAlumno/{id}', 'alumnosController@actualizar');
@@ -41,3 +42,6 @@ Route::get('/eliminarGroupxAlumnos/{id_alumno}&&{id_grupo}', 'groupXalController
 Route::get('/editarGroupxAlumnos/{id_alumno}&&{id_grupo}', 'groupXalController@editar');
 Route::post('/actualizarGroupxAlumnos/{alumno}&&{grupo}&&{maestro}', 'groupXalController@actualizar');
 
+//crear ruta cargarMaterias de consultarAlumnos
+//lista de materias dependiendo de su carrera
+//lista de materias que el alumno puede y no puede cargar dependiendo su kardex
