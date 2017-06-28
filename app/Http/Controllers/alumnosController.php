@@ -22,6 +22,8 @@ class alumnosController extends Controller
    		$alumno->sexo=$datos->input('sexo');
    		$alumno->carrera_id=$datos->input('carrera');
    		$alumno->save();
+         flash('¡Se guardaron exitósamente los datos del alumno!')->succes();
+         //colocar un trycatch con el -> succes o ->danger o cualquier otro de la pagina y la accion en la que tiene que salir
 
    		return redirect('/consultarAlumnos');
    }

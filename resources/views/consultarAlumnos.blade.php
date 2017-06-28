@@ -1,6 +1,7 @@
 @extends('master')
 
 @section('contenido')
+@include('flash::message')
 <table class="table table-striped">
 	
 	<thead>
@@ -46,5 +47,9 @@
 <div class="text-center">
 	{{ $alumnos->links() }}
 </div>
-
+<script type="text/javascript">
+	setTimeout(function(){
+		$(".alert").fadeOut(1500);
+	},1500);
+</script>
 @stop
