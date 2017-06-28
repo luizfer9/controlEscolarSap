@@ -12,10 +12,10 @@
 */
 Route::get('/', 'homeController@index');
 
-Route::get('/registrarAlumno', 'alumnosController@registrar');
+Route::get('/registrarAlumno','alumnosController@registrar');
 Route::post('/guardarAlumno', 'alumnosController@guardar');
 Route::get('/consultarAlumnos', 'alumnosController@consultar');
-Route::get('/cargarMaterias/{id}', 'materiasController@cargar');
+//Route::get('/cargarMaterias/{id}', 'materiasController@cargar');
 Route::get('/eliminarAlumno/{id}', 'alumnosController@eliminar');
 Route::get('/editarAlumno/{id}', 'alumnosController@editar');
 Route::post('/actualizarAlumno/{id}', 'alumnosController@actualizar');
