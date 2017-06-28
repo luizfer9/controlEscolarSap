@@ -4,9 +4,7 @@
 <table class="table table-striped">
 	
 	<thead>
-		<!--h1 class="text-right"-->
-			<a href="{{url('/alumnosPDF')}}" class="btn btn-default btn-xs">PDF</a>
-		<!--/h1-->
+
 		<tr>
 			<th>ID</th>
 			<th>Nombre</th>
@@ -14,7 +12,7 @@
 			<th>Edad</th>
 			<th>Sexo</th>
 			<th>Carrera</th>
-			<th>Opciones</th>
+			<th ><a href="{{url('/alumnosPDF')}}" class="btn btn-default btn-xs">PDF</a></th>
 		</tr>
 		@foreach($alumnos as $a)
 			<tr>

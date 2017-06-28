@@ -72,4 +72,13 @@ class groupXalController extends Controller
 
       return redirect('consultarGrupoxAlumnos');    
     }
+    public function pdf(){
+     $grpxal=Grpxal::all();
+     $alumno=Alumnos::all();
+     $maestros=Maestros::all();
+     $vista=view('gruposXalumnosPDF',compact('grpxal'));
+     $pdf=\App::make('dompdf.wrapper');
+     $pdf->loadHTML($vista);
+     return $pdf->stream('ListaMaestros.pdf');
+   }
 }

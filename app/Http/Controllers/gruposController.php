@@ -63,4 +63,11 @@ class gruposController extends Controller
 
       return redirect('consultarGrupos');
    	}
+      public function pdf(){
+      $grupos=Grupos::all();
+      $vista=view('gruposPDF',compact('grupos'));
+      $pdf=\App::make('dompdf.wrapper');
+      $pdf->loadHTML($vista);
+      return $pdf->stream('ListaGrupos.pdf');
+    }
 }

@@ -9,7 +9,7 @@
 			<th>Horario</th>
 			<th>Maestro</th>
 			<th>Materia</th>
-			<th>Opciones</th>
+	        <th ><a href="{{url('/gruposPDF')}}" class="btn btn-default btn-xs">PDF</a></th>
 		</tr>
 		@foreach($grupos as $a)
 			<tr>

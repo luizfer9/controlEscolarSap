@@ -8,7 +8,8 @@
       <th>Numero de control</th>
       <th>Edad</th>
       <th>Sexo</th>
-      <th>Opciones</th>
+      <th>Materia</th>
+      <th ><a href="{{url('/maestrosPDF')}}" class="btn btn-default btn-xs">PDF</a></th>
     </tr>
     @foreach($maestro as $m)
     <tr>

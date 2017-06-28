@@ -27,6 +27,6 @@ class materiasController extends Controller{
 		->select('grupos.id','materias.nombre','grupos.hora','grupos.clave')
 		-get();
 
-		return view('cargarMaterias',)
+		return view('cargarMaterias',);
 	}
 }

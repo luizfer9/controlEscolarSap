@@ -34,6 +34,8 @@
             <li><a href="{{url('/consultarGrupos')}}">Consultar Grupos</a></li>
             <li><a href="{{url('/registrarGrupoxAlumnos')}}">Registrar Grupos x Alumnos</a></li>
             <li><a href="{{url('/consultarGrupoxAlumnos')}}">Consultar Grupos x Alumnos</a></li>
+            <li><a href="{{url('/cargarMaterias')}}">Cargar materias</a></li>
+
 
 
             <li class="divider"></li>

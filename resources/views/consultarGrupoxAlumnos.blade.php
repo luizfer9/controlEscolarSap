@@ -8,13 +8,13 @@
 			<th>Alumno</th>
 			<th>Grupo</th>
 			<th>Maestro</th>
-			<th>Opciones</th>
+      		<th ><a href="{{url('/gruposXalumnosPDF')}}" class="btn btn-default btn-xs">PDF</a></th>
 		</tr>
 		@foreach($grpxal as $a)
 			<tr>
-				<td>{{$a->id_alumno}}</td>
+				<td>{{$a->alumno}}</td>
 				<td>{{$a->id_grupo}}</td>
-				<td>{{$a->maestro_id}}</td><!--borrar maestro_id y dejar maestro-->
+				<td>{{$a->maestro}}</td><!--borrar maestro_id y dejar maestro-->
 				<td>
 
 				<a href="{{url('/editarGroupxAlumnos')}}/{{$a->id_alumno}}&&{{$a->id_grupo}}" class="btn btn-primary btn-xs">
