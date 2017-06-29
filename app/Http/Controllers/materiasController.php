@@ -29,4 +29,30 @@ class materiasController extends Controller{
 
 		return view('cargarMaterias',);
 	}
+	public function capturarCalificaciones($idg){
+		$alumnosGrupos=DB::table('alumnos_grupos')
+		->join('alumnos','alumnos.id','=','alumnos_grupos.alumno_id')
+		->where('alumnos_grupos.grupo_id','=',$idg)
+		->select('alumnos.nombre','alumnos.id','alumnos_grupos.calificacion')
+		->get();
+
+		$datos=DB::table('grupos')
+		->where('grupos.id','=',$idg)
+		->join('materias','materias-id','grupos.materia_id')
+		->select('grupos.aula','grupos.id','materias.nombre')
+		->first();
+
+		return view('capturarCalificaciones',compact('alumnosGrupos','datos'));
+	}
+	public function guardarCalificaciones($idg, Request $datos ){
+		$calificaciones=$datos->input('calificaciones');
+		foreach($calificaciones as $key => $value){
+			DB::talbe('alumnos_grupos')
+			->where('alumnos_grupos.grupo_id','=',$idg)
+			->where('alumnos_grupos.alumno_id','=',$key)
+			->update(['alumnos_grupos.calificacion'=>$value]);
+		}
+		return redirec('/capturarCalificaciones/'.$idg);
+	}
+	
 }
