@@ -3,9 +3,7 @@
 @section('contenido')
 @include('flash::message')
 <table class="table table-striped">
-	
 	<thead>
-
 		<tr>
 			<th>ID</th>
 			<th>Nombre</th>
@@ -13,7 +11,9 @@
 			<th>Edad</th>
 			<th>Sexo</th>
 			<th>Carrera</th>
-			<th ><a href="{{url('/alumnosPDF')}}" class="btn btn-default btn-xs">PDF</a></th>
+			<th >
+				<a href="{{url('/alumnosPDF')}}" class="btn btn-default btn-xs">PDF</a>
+			</th>
 		</tr>
 		@foreach($alumnos as $a)
 			<tr>
@@ -48,8 +48,8 @@
 	{{ $alumnos->links() }}
 </div>
 <script type="text/javascript">
-	setTimeout(function(){
-		$(".alert").fadeOut(1500);
-	},1500);
+            setTimeout(function() {
+                $(".alert").fadeOut(1500);
+            },1500);
 </script>
 @stop

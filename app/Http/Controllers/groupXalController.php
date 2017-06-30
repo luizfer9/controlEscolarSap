@@ -32,7 +32,9 @@ class groupXalController extends Controller
          ->join('alumnos', 'alumnosxgrupos.id_alumno', '=', 'alumnos.id')
          ->join('grupos', 'alumnosxgrupos.id_grupo','=', 'grupos.id')
          ->join('maestros', 'grupos.maestro_id','=','maestros.id')
-         ->select('alumnosxgrupos.*', 'alumnos.nombre AS alumno','grupos.aula as aula','maestros.nombre as maestro')
+         ->join('materias', 'grupos.materia_id','=','materias.id')
+         ->select('alumnosxgrupos.*', 'alumnos.nombre AS alumno','grupos.aula as aula',
+          'maestros.nombre as maestro','materias.nombre AS materia','grupos.materia_id','grupos.horario')
          ->paginate(5);
     return view('consultarGrupoxAlumnos', compact('grpxal'));
     }

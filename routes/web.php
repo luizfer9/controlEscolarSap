@@ -45,8 +45,9 @@ Route::post('/actualizarGroupxAlumnos/{alumno}&&{grupo}&&{maestro}', 'groupXalCo
 Route::get('/gruposXalumnosPDF', 'groupXalController@pdf');
 
 Route::get('/cargarMaterias/{id}', 'materiasController@cargar');
-Route::get('/capturarMaterias', 'materiasController@capturarCalificaciones');
-Route::post('/guardarCalificaciones/{idg}','materiasController@guardarCalificaciones');
+Route::get('/cargarGrupo/{id_alumno}&&{id_grupo}&&{maestro_id}', 'materiasController@cargarGrupo');
+Route::get('/capturarCalificaciones/{idg}', 'materiasController@capturarCalificaciones');
+Route::post('/guardarCalificaciones/{idg}', 'materiasController@guardarCalificaciones');
 
 //crear ruta cargarMaterias de consultarAlumnos
 //lista de materias dependiendo de su carrera

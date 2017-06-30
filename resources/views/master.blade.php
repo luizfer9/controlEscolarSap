@@ -32,10 +32,8 @@
             <li><a href="{{url('/consultarMaestro')}}">Consultar Maestro</a></li>
             <li><a href="{{url('/registrarGrupo')}}">Registrar Grupos</a></li>
             <li><a href="{{url('/consultarGrupos')}}">Consultar Grupos</a></li>
-            <li><a href="{{url('/registrarGrupoxAlumnos')}}">Registrar Grupos x Alumnos</a></li>
-            <li><a href="{{url('/consultarGrupoxAlumnos')}}">Consultar Grupos x Alumnos</a></li>
-            <li><a href="{{url('/cargarMaterias')}}">Cargar materias</a></li>
-
+            <li><a href="{{url('/registrarGrupoxAlumnos')}}">Registrar Grupos x Maestros</a></li>
+            <li><a href="{{url('/consultarGrupoxAlumnos')}}">Consultar Grupos x Maestros x Alumnos</a></li>
 
 
             <li class="divider"></li>
