@@ -1,8 +1,14 @@
 @extends('master')
 
 @section('contenido')
-	<h2>Grupo: {{$datos->aula}} Materia: {{$datos->materia}}</h2>
-	<hr>
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th>Grupo: </th>
+			<td>{{$datos->id_grupo}}</td>
+			<th>Materia: </th>
+			<td>{{$datos->materia_id}}</td>
+   		<hr>
 	<div class="container">
 		<div class="row">
 			<div class="col-xs-12">

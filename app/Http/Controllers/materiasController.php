@@ -53,11 +53,11 @@ class materiasController extends Controller{
         $alumnosGrupo=DB::table('alumnosxgrupos')
             ->join('alumnos', 'alumnos.id', '=', 'alumnosxgrupos.id_alumno')
             ->where('alumnosxgrupos.id_grupo', '=', $idg)
-            ->select('alumnos.nombre', 'alumnos.id', 'alumnosxgrupos.calificacion')
+            ->select('alumnos.nombre AS alumno', 'alumnos.id', 'alumnosxgrupos.calificacion')
             ->get();
         
         $datos=DB::table('grupos')
-            ->where('grupos.id', $idg)
+            ->where('grupos.id','=', $idg)
             ->join('materias', 'materias.id', 'grupos.materia_id')
             ->select('grupos.aula AS aula', 'grupos.id', 'materias.nombre AS materia')
             ->first();
