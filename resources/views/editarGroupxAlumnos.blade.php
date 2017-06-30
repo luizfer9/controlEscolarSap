@@ -23,7 +23,7 @@
 	<div class="form-group">
 		<label for="maestro">Maestro:</label>
 		<select name="maestro" class="form-control">
-			<option value="{{$grpxal->maestro_id}}">{{$grpxal->maestro_id}}</option>
+			<option value="{{$grpxal->maestro_id}}">{{$grpxal->nom_maestro}}</option>
 			@foreach($maestros as $c)
 				<option value="{{$c->id}}">{{$c->nombre}}</option>
 			@endforeach

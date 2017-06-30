@@ -24,6 +24,7 @@ class maestrosController extends Controller
    		$maestro->sexo=$datos->input('sexo');
    		$maestro->materia_id=$datos->input('materia');
    		$maestro->save();
+         flash('¡Se guardaron exitósamente los datos del maestro!')->success();
 
    		return redirect('/consultarMaestro');
    }

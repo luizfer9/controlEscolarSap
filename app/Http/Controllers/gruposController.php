@@ -24,6 +24,7 @@ class gruposController extends Controller
     	$grupo->maestro_id=$datos->input('maestro');
     	$grupo->materia_id=$datos->input('materia');
     	$grupo->save();
+      flash('¡Se guardaron exitósamente los datos del grupo!')->success();
 
     	return redirect('consultarGrupos');
     }

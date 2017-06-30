@@ -1,5 +1,7 @@
 @extends('master')
 @section('contenido')
+@include('flash::message')
+
 <table class= "table table-striped">
   <thead>
     <tr>

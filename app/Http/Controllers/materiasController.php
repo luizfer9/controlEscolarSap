@@ -43,33 +43,33 @@ class materiasController extends Controller{
         return redirect('/cargarMaterias/'.$alumno);
     }
     public function bajaGrupo($id, $idg){
-        DB::table('alumnos_grupos')
-            ->where('alumnos_grupos.grupo_id', '=', $idg)
-            ->where('alumnos_grupos.alumno_id', '=', $id)
+        DB::table('alumnosxgrupos')
+            ->where('alumnosxgrupos.id_grupo', '=', $idg)
+            ->where('alumnosxgrupos.id_alumno', '=', $id)
             ->delete();
             return redirect('/cargarMaterias/'.$id);
     }
     public function capturarCalificaciones($idg){
-        $alumnosGrupo=DB::table('alumnos_grupos')
-            ->join('alumnos', 'alumnos.id', '=', 'alumnos_grupos.alumno_id')
-            ->where('alumnos_grupos.grupo_id', '=', $idg)
-            ->select('alumnos.nombre', 'alumnos.id', 'alumnos_grupos.calificacion')
+        $alumnosGrupo=DB::table('alumnosxgrupos')
+            ->join('alumnos', 'alumnos.id', '=', 'alumnosxgrupos.id_alumno')
+            ->where('alumnosxgrupos.id_grupo', '=', $idg)
+            ->select('alumnos.nombre', 'alumnos.id', 'alumnosxgrupos.calificacion')
             ->get();
         
         $datos=DB::table('grupos')
             ->where('grupos.id', $idg)
             ->join('materias', 'materias.id', 'grupos.materia_id')
-            ->select('grupos.clave', 'grupos.id', 'materias.nombre')
+            ->select('grupos.aula AS aula', 'grupos.id', 'materias.nombre AS materia')
             ->first();
         return view('capturarCalificaciones', compact('alumnosGrupo', 'datos'));
     }
     public function guardarCalificaciones($idg, Request $datos){
-        $calificaciones=$datos->input('calificaciones');
+        $calificaciones=$datos->input('calificacion');
         foreach ($calificaciones as $key => $value) {
-            DB::table('alumnos_grupos')
-                ->where('alumnos_grupos.grupo_id', '=', $idg)
-                ->where('alumnos_grupos.alumno_id', '=', $key)
-                ->update(['alumnos_grupos.calificacion' => $value]);
+            DB::table('alumnosxgrupos')
+                ->where('alumnosxgrupos.id_grupo', '=', $idg)
+                ->where('alumnosxgrupos.id_alumno', '=', $key)
+                ->update(['alumnosxgrupos.calificacion' => $value]);
         }
         return redirect('/capturarCalificaciones/'.$idg);
     }

@@ -71,8 +71,19 @@ class groupXalController extends Controller
       ->where('id_grupo',$grupoc)
       ->where('maestro_id',$maestroc)
       -> update(array('id_alumno'=>$a),array('id_grupo'=>$b),array('maestro_id',$c));
+      flash('¡Se actualizado exitósamente los datos del grupo!')->success();
 
       return redirect('consultarGrupoxAlumnos');    
+    }
+    public function listagrupos(){
+      $grpxal=DB::table('alumnosxgrupos')
+         ->join('grupos', 'alumnosxgrupos.id_grupo','=', 'grupos.id')
+         ->join('maestros', 'grupos.maestro_id','=','maestros.id')
+         ->join('materias', 'grupos.materia_id','=','materias.id')
+         ->select('alumnosxgrupos.*','grupos.aula as aula','maestros.nombre as maestro',
+          'materias.nombre AS materia','grupos.materia_id','grupos.horario')
+         ->paginate(5);
+      return view('listaGrupos', compact('grpxal'));
     }
     public function pdf(){
      $grpxal=Grpxal::all();

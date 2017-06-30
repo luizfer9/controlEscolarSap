@@ -1,6 +1,7 @@
 @extends('master')
+
 @section('contenido')
-	<h2>Grupo: {{$datos->clave}} Materia: {{$datos->nombre}}</h2>
+	<h2>Grupo: {{$datos->aula}} Materia: {{$datos->materia}}</h2>
 	<hr>
 	<div class="container">
 		<div class="row">
