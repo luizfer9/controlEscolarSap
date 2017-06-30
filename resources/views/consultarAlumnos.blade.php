@@ -36,6 +36,9 @@
 					<a href="{{url('/editarAlumno')}}/{{$a->id}}" class="btn btn-primary btn-xs">
 						<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
 					</a>
+					<a href="{{url('/printKardex')}}/{{$a->id}}" class="btn btn-success btn-xs">
+						Kardex
+					</a>
 					<a href="{{url('/eliminarAlumno')}}/{{$a->id}}" class="btn btn-danger btn-xs">
 						<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>	
 					</a>

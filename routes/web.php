@@ -19,6 +19,7 @@ Route::get('/eliminarAlumno/{id}', 'alumnosController@eliminar');
 Route::get('/editarAlumno/{id}', 'alumnosController@editar');
 Route::post('/actualizarAlumno/{id}', 'alumnosController@actualizar');
 Route::get('/alumnosPDF', 'alumnosController@pdf');
+//Route::get('/printkardex/{id}', 'alumnosController@imprimir');
 
 Route::get('/registrarMaestro', 'maestrosController@registrar');
 Route::post('/guardarMaestro', 'maestrosController@guardar');

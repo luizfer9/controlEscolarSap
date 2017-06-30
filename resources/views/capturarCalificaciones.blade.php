@@ -35,7 +35,10 @@
 					</tbody>
 				</table>
 				<div>
-				<button type="submit" class="btn btn-primary">Guardar</button>
+				<button type="submit" class="btn btn-primary btn-xs">Guardar</button>
+				<a href="{{url('/listaGrupos')}}" class="btn btn-danger btn-xs"> Return
+						<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>	
+					</a>
 				</div>
 				</form>
 			</div>

@@ -65,13 +65,15 @@ class materiasController extends Controller{
         return view('capturarCalificaciones', compact('alumnosGrupo', 'datos'));
     }
     public function guardarCalificaciones($idg, Request $datos){
+        //dd($idg);
         $calificaciones=$datos->input('calificacion');
+        $alumno=$datos->input('alumno');
         foreach ($calificaciones as $key => $value) {
             DB::table('alumnosxgrupos')
                 ->where('alumnosxgrupos.id_grupo', '=', $idg)
-                ->where('alumnosxgrupos.id_alumno', '=', $key)
-                ->update(['alumnosxgrupos.calificacion' => $value]);
-            flash('¡Se guardo exitósamente la calificacion!')->success();
+                ->where('alumnosxgrupos.id_alumno', '=', $value)
+                ->update(['alumnosxgrupos.calificacion' => $key]);
+           // flash('¡Se guardo exitósamente la calificacion!')->success();
 
         }
         return redirect('/capturarCalificaciones/'.$idg);
