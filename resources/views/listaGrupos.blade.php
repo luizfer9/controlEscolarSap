@@ -24,7 +24,7 @@
 				<td>{{$a->horario}}</td>
 				<td>{{$a->maestro}}</td>
 				<td>
-				<a href="{{url('/capturarCalificaciones')}}/{{$a->id_alumno}}" class="btn btn-primary btn-xs">
+				<a href="{{url('/capturarCalificaciones')}}/{{$a->id_grupo}}" class="btn btn-primary btn-xs">
 						<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
 				</a>
       			<a href="{{url('/gruposXalumnosPDF')}}" class="btn btn-default btn-xs">PDF</a>

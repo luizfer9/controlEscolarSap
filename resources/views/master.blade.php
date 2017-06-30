@@ -34,7 +34,7 @@
             <li><a href="{{url('/consultarGrupos')}}">Consultar Grupos</a></li>
             <li><a href="{{url('/consultarGrupoxAlumnos')}}">Consultar Grupos x Maestros x Alumnos</a></li>
             <li><a href="{{url('/listaGrupoxAlumnos')}}">Lista Grupos</a></li>
-            <li><a href="{{url('/printkardex')}}">Imprimir Kardex x Alumno</a></li>
+            <!--li><a href="{{url('/printkardex')}}">Imprimir Kardex x Alumno</a></li-->
 
 
 

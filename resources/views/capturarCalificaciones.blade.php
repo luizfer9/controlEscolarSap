@@ -1,19 +1,21 @@
 @extends('master')
 
 @section('contenido')
+@include('flash::message')
 <table class="table table-striped">
-	<thead>
-		<tr>
-			<th>Grupo: </th>
-			<td>{{$datos->id_grupo}}</td>
-			<th>Materia: </th>
-			<td>{{$datos->materia_id}}</td>
-   		<hr>
 	<div class="container">
 		<div class="row">
 			<div class="col-xs-12">
-				<form action="{{url('/guardarCalificaciones')}}/{{$datos->id}}" method="POST">
+				<form action="{{url('/guardarCalificaciones')}}/{{$datos->grupo}}" method="POST">
 				<input id="token" type="hidden" name="_token" value="{{ csrf_token() }}">
+				<thead>
+					<tr>
+						<th>Grupo: </th>
+						<td>{{$datos->grupo}}</td>
+
+						<th>Materia: </th>
+						<td>{{$datos->materia}}</td>
+					<hr>
 				<table class="table table-bordered">
 					<thead>
 						<tr>
@@ -24,7 +26,7 @@
 					<tbody>
 					@foreach($alumnosGrupo as $ag)
 						<tr>
-							<td>{{$ag->nombre}}</td>
+							<td>{{$ag->alumno}}</td>
 							<td>
 								<input class="form-control" type="number" name="calificacion[]" required value="{{$ag->calificacion}}">
 							</td>
@@ -39,4 +41,9 @@
 			</div>
 		</div>
 	</div>
+<script type="text/javascript">
+            setTimeout(function() {
+                $(".alert").fadeOut(1500);
+            },1500);
+</script>
 @stop

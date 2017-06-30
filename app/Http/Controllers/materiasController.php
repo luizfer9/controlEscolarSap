@@ -50,6 +50,7 @@ class materiasController extends Controller{
             return redirect('/cargarMaterias/'.$id);
     }
     public function capturarCalificaciones($idg){
+        //dd($idg);
         $alumnosGrupo=DB::table('alumnosxgrupos')
             ->join('alumnos', 'alumnos.id', '=', 'alumnosxgrupos.id_alumno')
             ->where('alumnosxgrupos.id_grupo', '=', $idg)
@@ -59,7 +60,7 @@ class materiasController extends Controller{
         $datos=DB::table('grupos')
             ->where('grupos.id','=', $idg)
             ->join('materias', 'materias.id', 'grupos.materia_id')
-            ->select('grupos.aula AS aula', 'grupos.id', 'materias.nombre AS materia')
+            ->select('grupos.aula AS aula', 'grupos.id AS grupo', 'materias.nombre AS materia')
             ->first();
         return view('capturarCalificaciones', compact('alumnosGrupo', 'datos'));
     }
@@ -70,6 +71,8 @@ class materiasController extends Controller{
                 ->where('alumnosxgrupos.id_grupo', '=', $idg)
                 ->where('alumnosxgrupos.id_alumno', '=', $key)
                 ->update(['alumnosxgrupos.calificacion' => $value]);
+            flash('¡Se guardo exitósamente la calificacion!')->success();
+
         }
         return redirect('/capturarCalificaciones/'.$idg);
     }
