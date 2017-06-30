@@ -14,9 +14,15 @@ class groupXalController extends Controller
 {
     public function registrar(){
    		$grupos=Grupos::all();
-   		$alumnos=Alumnos::all();
+      
+      /*$titles = DB::table('alumnosxgrupos')
+        ->join('grupos', 'alumnosxgrupos.id_grupo', '=', 'grupos.id')
+        ->select('grupos.id')
+        ->get();*/
+        
+      $alumnos=Alumnos::all();
       $maestros=Maestros::all();
-   		return view('registrarGrupoxAlumnos', compact('grupos','alumnos','maestros'));
+      return view('registrarGrupoxAlumnos', compact('grupos','alumnos','maestros','titles'));
    	}
     public function guardar(Request $datos){
       $grpxal= new Grpxal();
@@ -31,7 +37,7 @@ class groupXalController extends Controller
       $grpxal=DB::table('alumnosxgrupos')
          ->join('alumnos', 'alumnosxgrupos.id_alumno', '=', 'alumnos.id')
          ->join('grupos', 'alumnosxgrupos.id_grupo','=', 'grupos.id')
-         ->join('maestros', 'grupos.maestro_id','=','maestros.id')
+         ->join('maestros', 'alumnosxgrupos.maestro_id','=','maestros.id')
          ->select('alumnosxgrupos.*', 'alumnos.nombre AS alumno','grupos.aula as aula','maestros.nombre as maestro')
          ->paginate(5);
     return view('consultarGrupoxAlumnos', compact('grpxal'));
@@ -44,16 +50,20 @@ class groupXalController extends Controller
        ->delete();
       return redirect('consultarGrupoxAlumnos');
     }
-    public function editar($id_alumno,$id_grupo){
+    public function editar($id_alumno,$id_grupo,$maestro_id){
+      //dd($maestro_id);
       $grpxal=DB::table('alumnosxgrupos')
        ->where('id_alumno','=',$id_alumno)
        ->where('id_grupo','=',$id_grupo)
+       ->where('grupos.maestro_id','=',$maestro_id)
        ->join('alumnos', 'alumnosxgrupos.id_alumno', '=', 'alumnos.id')
        ->join('grupos', 'alumnosxgrupos.id_grupo','=', 'grupos.id')
-       ->join('maestros', 'grupos.maestro_id','=','maestros.id')         
-       ->select('alumnosxgrupos.*', 'maestros.nombre AS nom_maestro','alumnos.nombre AS nom_alumno')
+       ->join('maestros', 'alumnosxgrupos.maestro_id','=','maestros.id')         
+       ->select('alumnosxgrupos.*', 'maestros.nombre AS maestro','alumnos.nombre AS alumno','grupos.aula AS aula')
        ->first();
-
+      //$gruxma=DB::table('maestros')
+       //->where('id','=',$maestro_id)
+       dd($grpxal);
       $grupos=Grupos::all();
       $alumnos=Alumnos::all();
       $maestros=Maestros::all();
@@ -61,7 +71,7 @@ class groupXalController extends Controller
       return view('editarGroupxAlumnos', compact('grpxal','alumnos','maestros','grupos'));
     }
     public function actualizar($alumnoc,$grupoc,$maestroc,Request $datos){
-      //dd($alumnoc);
+      dd($grupoc);
       $a=$datos->input('alumno_id');
       $b=$datos->input('grupo');
       $c=$datos->input('maestro');

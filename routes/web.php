@@ -41,7 +41,7 @@ Route::get('/registrarGrupoxAlumnos', 'groupXalController@registrar');
 Route::post('/guardarGruposxAlumnos', 'groupXalController@guardar');
 Route::get('/consultarGrupoxAlumnos', 'groupXalController@consultar');
 Route::get('/eliminarGroupxAlumnos/{id_alumno}&&{id_grupo}', 'groupXalController@eliminar');
-Route::get('/editarGroupxAlumnos/{id_alumno}&&{id_grupo}', 'groupXalController@editar');
+Route::get('/editarGroupxAlumnos/{id_alumno}&&{id_grupo}&&{maestro_id}', 'groupXalController@editar');
 Route::post('/actualizarGroupxAlumnos/{alumno}&&{grupo}&&{maestro}', 'groupXalController@actualizar');
 Route::get('/gruposXalumnosPDF', 'groupXalController@pdf');
 

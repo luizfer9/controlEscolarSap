@@ -10,7 +10,7 @@ extends('master')
 		<option value="{{$m-id}}">{{"$m->nombre"}}{{$m->grupo}}{{$m->hora}}</option>
 	@endforeach
 	</select>
-</div
+</div>
 <h2>Materias Cargadas</h2>
 <hr>
 <div class="row">
