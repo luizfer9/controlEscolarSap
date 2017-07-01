@@ -28,7 +28,7 @@
 						<tr>
 							<td>{{$ag->alumno}}</td>
 							<td>
-								<input class="form-control" type="number" name="calificacion[]" required value="{{$ag->calificacion}}">
+								<input class="form-control" type="number" name="calificacion[{{$ag->id}}]" required value="{{$ag->calificacion}}">
 							</td>
 						</tr>
 					@endforeach
