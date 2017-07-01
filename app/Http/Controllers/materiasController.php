@@ -73,7 +73,7 @@ class materiasController extends Controller{
                 ->where('alumnosxgrupos.id_grupo', '=', $idg)
                 ->where('alumnosxgrupos.id_alumno', '=', $key)
                 ->update(['alumnosxgrupos.calificacion' => $value]);
-           // flash('¡Se guardo exitósamente la calificacion!')->success();
+            flash('¡Se guardo exitósamente la calificacion!')->success();
 
         }
         return redirect('/capturarCalificaciones/'.$idg);
