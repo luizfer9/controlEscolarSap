@@ -38,7 +38,7 @@
 						<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>	
 				</a>		
 				</a>
-      			<a href="{{url('/gruposXalumnosPDF')}}" class="btn btn-default btn-xs">PDF</a>
+      			<!--a href="{{url('/gruposXalumnosPDF')}}" class="btn btn-default btn-xs">PDF</a-->
 				</td>
 			</tr>
 		@endforeach

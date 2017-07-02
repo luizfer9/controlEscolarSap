@@ -44,13 +44,15 @@ Route::get('/eliminarGroupxAlumnos/{id_alumno}&&{id_grupo}', 'groupXalController
 Route::get('/editarGroupxAlumnos/{id_alumno}&&{id_grupo}', 'groupXalController@editar');
 Route::post('/actualizarGroupxAlumnos/{alumno}&&{grupo}&&{maestro}', 'groupXalController@actualizar');
 Route::get('/listaGrupoxAlumnos', 'groupXalController@listagrupos');
-Route::get('/gruposXalumnosPDF', 'groupXalController@pdf');
+Route::get('/gruposXalumnosPDF/{idg}', 'groupXalController@pdf');
+
+
 
 Route::get('/cargarMaterias/{id}', 'materiasController@cargar');
 Route::get('/cargarGrupo/{id_alumno}&&{id_grupo}&&{maestro_id}', 'materiasController@cargarGrupo');
 Route::get('/bajaGrupo/{id_alumno}&&{id_grupo}', 'materiasController@bajaGrupo');
 Route::get('/capturarCalificaciones/{idg}', 'materiasController@capturarCalificaciones');
-Route::get('/capturarCalificaciones/{idg}', 'materiasController@capturarCalificaciones');
+//Route::get('/capturarCalificaciones/{idg}', 'materiasController@capturarCalificaciones'); // repetida
 Route::post('/guardarCalificaciones/{idg}', 'materiasController@guardarCalificaciones');
 
 //crear ruta cargarMaterias de consultarAlumnos

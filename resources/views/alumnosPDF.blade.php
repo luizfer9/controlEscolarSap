@@ -2,79 +2,67 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <img src="img/logo.png" width="150px" alt="">
   <title>Lista de Alumnos</title>
+  <img src="img/logo.png" width="150px">
   <style>
-    .encabezado{
-      color: white;
-      background-color: black;
+
+    table{
+      border-collapse: collapse;
+      width: 100%;
     }
+    .encabezado{
+      color: black;
+      background-color: white;
+      border-color: gray;
+      border: 2px solid;
+      border-radius: 5px;
+      padding: 5px;
+      height: 15px;
+      font-size: 15px;
+      font-weight: 12px;
+    }
+    .structure, th, td {
+      background-color: #f2f2f2;
+      border-bottom: 1px solid ;
+      height: 8px;
+      text-align: left;
+    }
+    
   </style>
 </head>
   <body>
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>Nombre</th>
-          <th>Número de control</th>
-          <th>Edad</th>
-          <th>Sexo</th>
-          <th>Carrera</th>
-        </tr>
-        <img src="img/logo.png" width="150px" alt="">
-          <h1 class="encabezado">Lista de alumnos</h1>
-          <br>
+    <h1 class="encabezado" >Lista de alumnos</h1>
+    <table class="structure">
+          <tr class="detayl">
+            <th>ID</th>
+            <th>Alumno</th>
+            <th>Número de control</th>
+            <th>Edad</th>
+            <th>Sexo</th>
+            <th>Carrera</th>
+          </tr>
           @foreach($alumnos as $a)
           <tr>
-            <td>{{$a->id_alumno}}</td>
+            <td>{{$a->id}}</td>
             <td>{{$a->nombre}}</td>
             <td>{{$a->numero_control}}</td>
             <td>{{$a->edad}}</td>
-            <td>{{$a->sexo}}</td>
+            <td>
+              @if($a->sexo==0)
+                Femenino
+              @else
+                Masculino
+              @endif
+            </td>
             <td>{{$a->carrera}}</td>
             <td>
           </tr>
           @endforeach
       </thead>
     </table>
+    <footer class="text-center">
+  <hr>
+  Ing. Web &copy; 2017 
+</footer>
   </body>
 </html>
-<!--DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>lista datos alumnos</title>
-    <style>
-      .encabezado{
-        color: blue;
-        background-color: black;
-      }
-    </style>
-  </head>
-  <body>
-    <img src="img/logo.png" width="150px" alt="">
-    <h1>Lista de Alumnos</h1>
-    <hr>
-    <tr>
-      <th>ID</th>
-      <th>Alumno</th>
-      <th>Numero de control</th>
-      <th>Edad</th>
-      <th>Sexo</th>
-      <th>Carrera</th>
-    </tr><
-    @foreach ($alumnos as $g)
-      {{$g->id_alumno}}<br>
-      {{$g->nombre}}<br>
-      {{$g->numero_control}}<br>
-      {{$g->edad}}<br>
-      {{$g->sexo}}<br>
-      {{$g->carrera}}<br>
-    @endforeach>
-  </body>
-</html>
-
-
-//hacer pdf en materias y en maestros. Grupos y materias para miercoles.
-//Imagenes van en la carpeta public(para generar la lista de gpos en el pdf)-->

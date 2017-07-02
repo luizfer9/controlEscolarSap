@@ -65,7 +65,12 @@ class gruposController extends Controller
       return redirect('consultarGrupos');
    	}
       public function pdf(){
-      $grupos=Grupos::all();
+      $grupos=DB::table('grupos')
+        ->join('maestros','grupos.maestro_id','=','maestros.id')
+        ->join('materias','grupos.materia_id','=','materias.id')
+        ->select('grupos.*','maestros.nombre AS maestro','materias.nombre AS materia')
+        ->orderBy('grupos.id','asc')
+        ->get();
       $vista=view('gruposPDF',compact('grupos'));
       $pdf=\App::make('dompdf.wrapper');
       $pdf->loadHTML($vista);

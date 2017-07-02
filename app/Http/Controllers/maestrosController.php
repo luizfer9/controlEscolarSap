@@ -68,7 +68,11 @@ class maestrosController extends Controller
       return redirect('consultarMaestro');
    }
    public function pdf(){
-     $maestros=Maestros::all();
+     $maestros=DB::table('maestros')
+         ->join('materias','maestros.materia_id','=','materias.id')
+         ->select('maestros.*','materias.nombre AS materia')
+         ->orderBy('maestros.id','asc')
+         ->get();
      $vista=view('maestrosPDF',compact('maestros'));
      $pdf=\App::make('dompdf.wrapper');
      $pdf->loadHTML($vista);

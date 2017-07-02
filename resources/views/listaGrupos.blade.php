@@ -27,7 +27,7 @@
 				<a href="{{url('/capturarCalificaciones')}}/{{$a->id_grupo}}" class="btn btn-primary btn-xs">
 						<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
 				</a>
-      			<a href="{{url('/gruposXalumnosPDF')}}" class="btn btn-default btn-xs">PDF</a>
+      			<a href="{{url('/gruposXalumnosPDF')}}/{{$a->id_grupo}}" class="btn btn-default btn-xs">PDF</a>
 				</td>
 			</tr>
 		@endforeach

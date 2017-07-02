@@ -77,21 +77,28 @@ class groupXalController extends Controller
     }
     public function listagrupos(){
       $grpxal=DB::table('alumnosxgrupos')
-         ->join('grupos', 'alumnosxgrupos.id_grupo','=', 'grupos.id')
-         ->join('maestros', 'grupos.maestro_id','=','maestros.id')
-         ->join('materias', 'grupos.materia_id','=','materias.id')
-         ->select('alumnosxgrupos.*','grupos.aula as aula','maestros.nombre as maestro',
-          'materias.nombre AS materia','grupos.materia_id','grupos.horario')
-         ->paginate(5);
+       ->join('grupos', 'alumnosxgrupos.id_grupo','=', 'grupos.id')
+       ->join('maestros', 'grupos.maestro_id','=','maestros.id')
+       ->join('materias', 'grupos.materia_id','=','materias.id')
+       ->select('alumnosxgrupos.*','grupos.aula as aula','maestros.nombre as maestro',
+        'materias.nombre AS materia','grupos.materia_id','grupos.horario')
+       ->paginate(5);
       return view('listaGrupos', compact('grpxal'));
     }
-    public function pdf(){
-     $grpxal=Grpxal::all();
-     $alumno=Alumnos::all();
-     $maestros=Maestros::all();
-     $vista=view('gruposXalumnosPDF',compact('grpxal'));
-     $pdf=\App::make('dompdf.wrapper');
-     $pdf->loadHTML($vista);
-     return $pdf->stream('ListaMaestros.pdf');
+    public function pdf($idg){
+      $lista=DB::table('alumnosxgrupos')
+        ->where('id_grupo',$idg)
+        ->join('alumnos','alumnosxgrupos.id_alumno','=','alumnos.id')
+        ->join('grupos','alumnosxgrupos.id_grupo','=','grupos.id')
+        ->join('maestros','alumnosxgrupos.maestro_id','=','maestros.id')
+        ->join('materias','grupos.materia_id','=','materias.id')
+        ->select('grupos.id','grupos.aula','maestros.nombre AS maestro','alumnos.numero_control','materias.nombre AS materia')
+        ->orderBy('alumnosxgrupos.id_grupo','asc')
+        ->get();
+      
+      $vista=view('gruposXalumnosPDF',compact('lista'));
+      $pdf=\App::make('dompdf.wrapper');
+      $pdf->loadHTML($vista);
+      return $pdf->stream('ListaAlumnosxGrupos.pdf');
    }
 }
