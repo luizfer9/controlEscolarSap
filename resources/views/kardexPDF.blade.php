@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Lista de Alumnos por Grupo</title>
+  <title>Lista de Grupos</title>
   <img src="img/logo.png" width="150px">
   <style>
 
@@ -31,20 +31,17 @@
   </style>
 </head>
   <body>
-    <h1 class="encabezado" >Lista de Alumnos por Grupo</h1>
+    <h1 class="encabezado" >Kardex</h1> 
     <table class="structure">
           <tr class="detayl">
-            <th>ID</th>
-            <th>Alumno</th>
-            <th>Número de control</th>
-            <th>Carrera</th>
+            <th>Materia</th>
+            <th>Maestro</th>
+            <th>calificación</th>
           </tr>
-          @foreach($lista as $a)
+          @foreach($alumnos as $a)
           <tr>
-            <td>{{$a->alumnoID}}</td>
-            <td>{{$a->alumno}}</td>
-            <td>{{$a->controlAlumno}}</td>
-            <td>{{$a->carrera}}</td>
+            <td>{{$a->materia}}</td>
+            <td>{{$a->maestro}}</td>
             <td>{{$a->calificacion}}</td>
             <td>
           </tr>

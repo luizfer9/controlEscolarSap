@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Carreras;
 use App\Alumnos;
+use App\GrpXal;
 use DB;
 
 class alumnosController extends Controller
@@ -81,16 +82,20 @@ class alumnosController extends Controller
       $pdf->loadHTML($vista);
       return $pdf->stream('ListaAlumnos.pdf');
    }
-   public function kardex(){
-      $alumnos=DB::table('alumnos')
+   public function kardex($idg){
+      $alumnos=DB::table('alumnosxgrupos')
+         ->join('alumnos','alumnosxgrupos.id_alumno', '=','alumnos.id')
          ->join('carreras','alumnos.carrera_id','=','carreras.id')
-         ->select('alumnos.*','carreras.nombre AS carrera')
-         ->orderBy('alumnos.id','asc')
+         ->join('grupos','alumnosxgrupos.id_grupo','=','grupos.id')
+         ->join('maestros','alumnosxgrupos.maestro_id','=','maestros.id')
+         ->join('materias','grupos.materia_id','=','materias.id')
+         ->where('alumnosxgrupos.id_alumno', '=', $idg)
+         ->select('grupos.id','grupos.aula','alumnosxgrupos.calificacion','maestros.nombre AS maestro','alumnos.id AS alumnoID','alumnos.numero_control AS controlAlumno','alumnos.nombre AS alumno','materias.nombre AS materia','carreras.nombre AS carrera')
          ->get();
       //dd($alumnos);
-      $vista=view('alumnosPDF', compact('alumnos'));
+      $vista=view('kardexPDF', compact('alumnos'));
       $pdf=\App::make('dompdf.wrapper');
       $pdf->loadHTML($vista);
-      return $pdf->stream('ListaAlumnos.pdf');
+      return $pdf->stream('Kardex.pdf');
    }
 }

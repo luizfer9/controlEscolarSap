@@ -15,9 +15,9 @@ class materiasController extends Controller{
             ->pluck('grupos.id');
         $lista=DB::table('grupos')
             ->whereNotIn('grupos.id', $gruposid)
-            ->join('maestros', 'maestros.id', '=', 'grupos.maestro_id')
-            ->join('materias', 'materias.id', '=', 'grupos.materia_id')
-            ->select('grupos.id AS id', 'materias.nombre AS materia', 'grupos.horario AS horario', 
+            ->join('maestros', 'grupos.maestro_id', '=', 'maestros.id')
+            ->join('materias', 'grupos.materia_id', '=', 'materias.id')
+            ->select('grupos.id AS grupoid', 'materias.nombre AS materia', 'grupos.horario AS horario', 
             	'grupos.aula AS aula','maestros.nombre AS maestro','grupos.maestro_id AS maestro_id')
             ->get();
         $materias=DB::table('grupos')
@@ -48,6 +48,14 @@ class materiasController extends Controller{
             ->where('alumnosxgrupos.id_alumno', '=', $id)
             ->delete();
             return redirect('/cargarMaterias/'.$id);
+    }
+        public function eliminar($id_alumno,$id_grupo){
+      //dd($id_alumno,$id_grupo);
+      $grpxal=DB::table('alumnosxgrupos')
+       ->where('id_alumno','=',$id_alumno)
+       ->where('id_grupo','=',$id_grupo)
+       ->delete();
+      return redirect('consultarGrupoxAlumnos');
     }
     public function capturarCalificaciones($idg){
         //dd($idg);

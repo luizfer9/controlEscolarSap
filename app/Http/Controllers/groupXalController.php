@@ -95,11 +95,11 @@ class groupXalController extends Controller
             ->join('maestros','alumnosxgrupos.maestro_id','=','maestros.id')
             ->join('materias','grupos.materia_id','=','materias.id')
             ->where('alumnosxgrupos.id_grupo', '=', $idg)
-            ->select('grupos.id','grupos.aula','maestros.nombre AS maestro','alumnos.id AS alumnoID','alumnos.numero_control AS controlAlumno','alumnos.nombre AS alumno','materias.nombre AS materia','carreras.nombre AS carrera')
+            ->select('grupos.id','grupos.aula','maestros.nombre AS maestro','alumnosxgrupos.calificacion','alumnos.id AS alumnoID','alumnos.numero_control AS controlAlumno','alumnos.nombre AS alumno','materias.nombre AS materia','carreras.nombre AS carrera')
             ->orderBy('alumnos.id','asc')
             ->get();
-        //dd($lista);
-      $vista=view('gruposXalumnosPDF', compact('lista'));
+
+      $vista=view('gruposXalumnosPDF', compact('lista'))->render();
       $pdf=\App::make('dompdf.wrapper');
       $pdf->loadHTML($vista);
       return $pdf->stream('ListasGruposxAlumnos.pdf');

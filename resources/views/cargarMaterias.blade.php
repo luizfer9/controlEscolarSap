@@ -9,7 +9,7 @@
 				<select name="materia" class="form-control">
 				<option value="0">Selecciona la materia</option>
 				@foreach($lista as $m)
-					<option value="{{$m->id}}">
+					<option value="{{$m->grupoid}}">
 						<table class="table table-striped">
 							<tr>
 								<th>{{$m->materia}}---------------------</th>
@@ -23,7 +23,7 @@
 				</select>
 			</div>
 			<div>
-				<a href="{{url('/cargarGrupo')}}/{{$alumno->id}}&&{{$m->id}}&&{{$m->maestro_id}}" class="btn btn-primary">Cargar grupo</a>
+				<a href="{{url('/cargarGrupo')}}/{{$alumno->id}}&&{{$m->grupoid}}&&{{$m->maestro_id}}" class="btn btn-primary">Cargar grupo</a>
 				<a href="{{url('/consultarAlumnos')}}" class="btn btn-danger">Cancelar</a>
 			</div>
 		<!--/form-->
@@ -54,10 +54,10 @@
 					<td>{{$mt->maestro}}</td>
 					<td>
 						
-						<a href="{{url('/cargarMaterias')}}/{{$mt->id}}" class="btn btn-info btn-xs">
+						<a href="{{url('/consultarAlumnos')}}" class="btn btn-info btn-xs">
 						<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
 						</a>
-						<a href="{{url('/bajagrupo')}}/{{$alumno->id}}" class="btn btn-danger btn-xs">
+						<a href="{{url('/consultarGrupoxAlumnos')}}" class="btn btn-danger btn-xs">
 						<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>	
 						</a>					
 					</td>

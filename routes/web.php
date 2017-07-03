@@ -50,9 +50,8 @@ Route::get('/listasGruposPDF/{idg}', 'groupXalController@pdf');
 
 Route::get('/cargarMaterias/{id}', 'materiasController@cargar');
 Route::get('/cargarGrupo/{id_alumno}&&{id_grupo}&&{maestro_id}', 'materiasController@cargarGrupo');
-Route::get('/bajaGrupo/{id_alumno}&&{id_grupo}', 'materiasController@bajaGrupo');
+Route::get('/bajaGrupo/{id_alumno}&&{id_grupo}', 'materiasController@eliminar');
 Route::get('/capturarCalificaciones/{idg}', 'materiasController@capturarCalificaciones');
-//Route::get('/capturarCalificaciones/{idg}', 'materiasController@capturarCalificaciones'); // repetida
 Route::post('/guardarCalificaciones/{idg}', 'materiasController@guardarCalificaciones');
 
 //crear ruta cargarMaterias de consultarAlumnos
