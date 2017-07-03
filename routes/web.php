@@ -19,7 +19,7 @@ Route::get('/eliminarAlumno/{id}', 'alumnosController@eliminar');
 Route::get('/editarAlumno/{id}', 'alumnosController@editar');
 Route::post('/actualizarAlumno/{id}', 'alumnosController@actualizar');
 Route::get('/alumnosPDF', 'alumnosController@pdf');
-//Route::get('/printkardex/{id}', 'alumnosController@imprimir');
+Route::get('/printKardex/{id}','alumnosController@kardex');
 
 Route::get('/registrarMaestro', 'maestrosController@registrar');
 Route::post('/guardarMaestro', 'maestrosController@guardar');
@@ -44,7 +44,7 @@ Route::get('/eliminarGroupxAlumnos/{id_alumno}&&{id_grupo}', 'groupXalController
 Route::get('/editarGroupxAlumnos/{id_alumno}&&{id_grupo}', 'groupXalController@editar');
 Route::post('/actualizarGroupxAlumnos/{alumno}&&{grupo}&&{maestro}', 'groupXalController@actualizar');
 Route::get('/listaGrupoxAlumnos', 'groupXalController@listagrupos');
-Route::get('/gruposXalumnosPDF/{idg}', 'groupXalController@pdf');
+Route::get('/listasGruposPDF/{idg}', 'groupXalController@pdf');
 
 
 

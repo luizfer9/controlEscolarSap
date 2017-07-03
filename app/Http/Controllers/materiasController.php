@@ -56,7 +56,7 @@ class materiasController extends Controller{
             ->where('alumnosxgrupos.id_grupo', '=', $idg)
             ->select('alumnos.nombre AS alumno', 'alumnos.id', 'alumnosxgrupos.calificacion')
             ->get();
-        
+        //dd($alumnosGrupo);
         $datos=DB::table('grupos')
             ->where('grupos.id','=', $idg)
             ->join('materias', 'materias.id', 'grupos.materia_id')

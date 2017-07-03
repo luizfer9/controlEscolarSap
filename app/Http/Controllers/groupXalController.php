@@ -76,29 +76,32 @@ class groupXalController extends Controller
       return redirect('consultarGrupoxAlumnos');    
     }
     public function listagrupos(){
-      $grpxal=DB::table('alumnosxgrupos')
-       ->join('grupos', 'alumnosxgrupos.id_grupo','=', 'grupos.id')
+      $grpxal=DB::table('grupos')
        ->join('maestros', 'grupos.maestro_id','=','maestros.id')
        ->join('materias', 'grupos.materia_id','=','materias.id')
-       ->select('alumnosxgrupos.*','grupos.aula as aula','maestros.nombre as maestro',
+       ->select('grupos.id AS grupo','grupos.aula as aula','maestros.nombre as maestro',
         'materias.nombre AS materia','grupos.materia_id','grupos.horario')
+       ->orderBy('grupos.id','asc')
        ->paginate(5);
+      // dd($grpxal);
       return view('listaGrupos', compact('grpxal'));
     }
     public function pdf($idg){
-      $lista=DB::table('alumnosxgrupos')
-        ->where('id_grupo',$idg)
-        ->join('alumnos','alumnosxgrupos.id_alumno','=','alumnos.id')
-        ->join('grupos','alumnosxgrupos.id_grupo','=','grupos.id')
-        ->join('maestros','alumnosxgrupos.maestro_id','=','maestros.id')
-        ->join('materias','grupos.materia_id','=','materias.id')
-        ->select('grupos.id','grupos.aula','maestros.nombre AS maestro','alumnos.numero_control','materias.nombre AS materia')
-        ->orderBy('alumnosxgrupos.id_grupo','asc')
-        ->get();
-      
-      $vista=view('gruposXalumnosPDF',compact('lista'));
+      //dd($idg);
+       $lista=DB::table('alumnosxgrupos')
+            ->join('alumnos', 'alumnosxgrupos.id_alumno', '=', 'alumnos.id')
+            ->join('carreras','alumnos.carrera_id','=','carreras.id')
+            ->join('grupos','alumnosxgrupos.id_grupo','=','grupos.id')
+            ->join('maestros','alumnosxgrupos.maestro_id','=','maestros.id')
+            ->join('materias','grupos.materia_id','=','materias.id')
+            ->where('alumnosxgrupos.id_grupo', '=', $idg)
+            ->select('grupos.id','grupos.aula','maestros.nombre AS maestro','alumnos.id AS alumnoID','alumnos.numero_control AS controlAlumno','alumnos.nombre AS alumno','materias.nombre AS materia','carreras.nombre AS carrera')
+            ->orderBy('alumnos.id','asc')
+            ->get();
+        //dd($lista);
+      $vista=view('gruposXalumnosPDF', compact('lista'));
       $pdf=\App::make('dompdf.wrapper');
       $pdf->loadHTML($vista);
-      return $pdf->stream('ListaAlumnosxGrupos.pdf');
+      return $pdf->stream('ListasGruposxAlumnos.pdf');
    }
 }

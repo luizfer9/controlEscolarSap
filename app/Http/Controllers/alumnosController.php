@@ -75,6 +75,19 @@ class alumnosController extends Controller
          ->select('alumnos.*','carreras.nombre AS carrera')
          ->orderBy('alumnos.id','asc')
          ->get();
+      //dd($alumnos);
+      $vista=view('alumnosPDF', compact('alumnos'));
+      $pdf=\App::make('dompdf.wrapper');
+      $pdf->loadHTML($vista);
+      return $pdf->stream('ListaAlumnos.pdf');
+   }
+   public function kardex(){
+      $alumnos=DB::table('alumnos')
+         ->join('carreras','alumnos.carrera_id','=','carreras.id')
+         ->select('alumnos.*','carreras.nombre AS carrera')
+         ->orderBy('alumnos.id','asc')
+         ->get();
+      //dd($alumnos);
       $vista=view('alumnosPDF', compact('alumnos'));
       $pdf=\App::make('dompdf.wrapper');
       $pdf->loadHTML($vista);

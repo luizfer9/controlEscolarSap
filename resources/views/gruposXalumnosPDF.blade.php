@@ -32,9 +32,9 @@
 </head>
   <body>
     <h1 class="encabezado" >Lista de Alumnos</h1>
-    <td>ID Grupo: </td>
+    <!--td>ID Grupo: </td>
     <td>Aula: </td>
-    <td>Maestro: </td>
+    <td>Maestro: </td-->
     <table class="structure">
           <tr class="detayl">
             <th>ID</th>
@@ -44,9 +44,9 @@
           </tr>
           @foreach($lista as $a)
           <tr>
-            <td>{{$a->id}}</td>
-            <td>{{$a->nombre}}</td>
-            <td>{{$a->numero_control}}</td>
+            <td>{{$a->alumnoID}}</td>
+            <td>{{$a->alumno}}</td>
+            <td>{{$a->controlAlumno}}</td>
             <td>{{$a->carrera}}</td>
             <td>
           </tr>
